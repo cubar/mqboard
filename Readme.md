@@ -13,26 +13,26 @@ So if you'd like to give it a try you will need:
 
 For convenience you could add the bin folder to your PATH environment variable.
 
-To upload micropython to your esp module go the the bin folder:
-  cd bin
-  wget http://micropython.org/resources/firmware/esp32-20220618-v1.19.1.bin
-  ./32flash.sh esp32-20220618-v1.19.1.bin erase flash
+To upload micropython to your esp module go the the bin folder and:
+- cd bin
+- wget http://micropython.org/resources/firmware/esp32-20220618-v1.19.1.bin
+- ./32flash.sh esp32-20220618-v1.19.1.bin erase flash
 
 Once you have the micropython firmware installed on your board you can start using rshell.
 Set your credentials in image/safemode/secrets.py.
 To put all python scripts in the image/ folder on you board you can use:
-  bin/upload-image.sh
+- bin/upload-image.sh
 
 See requirements.txt to understand which libs we need for the python environment to
 communicate with your esp module.
 See bin folder to upload micropython (if not already done).
 Use rshell to interact with your esp board via USB. An Alias is handy:
-  alias rs='rshell --port /dev/ttyUSB0'../Readme.md
+- alias rs='rshell --port /dev/ttyUSB0'../Readme.md
 Inside rs you have a few linux-like commands where you can use a special folder:
-  /pyboard
+- /pyboard
 that refers to the filesystem on your esp module.
 From your rshell prompt you can type:
-  repl
+- repl
 to enter repl mode where you can type micropython directly on your esp module.
 
 After bootstrapping once using rshell you communicate faster over MQTT:
