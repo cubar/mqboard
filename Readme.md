@@ -32,8 +32,6 @@ To upload micropython to your esp module go the the bin folder and:
 - ./32flash.sh esp32-20220618-v1.19.1.bin erase flash
 
 Set your credentials in image/safemode/secrets.py.
-To put all python scripts in the image/ folder on you board you can use:
-- bin/upload-image.sh
 
 See requirements.txt to understand which libs we need for the python environment to
 communicate with your esp module.
@@ -43,12 +41,14 @@ Inside rshell you have a few linux-like commands where you can use a special fol
 - /pyboard
 that refers to the filesystem on your esp module.
 From your rshell prompt you can type:
-- repl
-to enter repl mode where you can type micropython directly on your esp module.
+- sync image /pyboard # upload all contents of image to the esp module
+- repl                # Enter into interactive micropython mode on your esp module.
 
 Communication via MQTT (mqb) is much faster then via USB (rshell).
-Set you environment in the mqb script.
-The MQBOARD_SERVER should be the ip address of your MQTT server and MQBOARD_PREFIX is the first sting of the topic.
+After uploading the contents of the image folder to the esp module and setting you environment in the mqb script,
+You need to set two environment variables:
+- export MQBOARD_SERVER='10.0.0.1'    # the ip address of your MQTT server
+- export MQBOARD_PREFIX='<board-id>' # the first string of the topic
 This prefix is unique for every esp board and you can find it using the repl and looking for a line of the form:
 - I 16:50:20.298 watchdog: === topic=3101a4/mqb/cmd/eval/0F00D/
 
