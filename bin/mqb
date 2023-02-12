@@ -1,23 +1,24 @@
 #!/usr/bin/python
 
-from os import system, environ as env
+import os
 import sys
 
 server = ''
 server = ''
 board  = ''
 
-if not env.get('MQBOARD_SERVER'):
-  env['MQBOARD_SERVER'] = server
-if not env.get('MQBOARD_PREFIX'):
-  env['MQBOARD_PREFIX'] = board
+if not os.environ.get('MQBOARD_SERVER'):
+  os.environ['MQBOARD_SERVER'] = server
+if not os.environ.get('MQBOARD_PREFIX'):
+  os.environ['MQBOARD_PREFIX'] = board
 
 # Hier gaan we ervan uit dat argv geen single quotes bevat
 args = ' '.join([f"'{arg}'" for arg in sys.argv[1:]])
-cmd = "/home/chuck/py/aga/mqboard/mqboard.py "+args
+cwd = __file__[:-4]
+cmd = f"{cwd}/../mqboard/mqboard.py "+args
 
-serv = f'==== export MQBOARD_SERVER={env["MQBOARD_SERVER"]}'
-pref = f'==== export MQBOARD_PREFIX={env["MQBOARD_PREFIX"]}'
+serv = f'==== export MQBOARD_SERVER={os.environ["MQBOARD_SERVER"]}'
+pref = f'==== export MQBOARD_PREFIX={os.environ["MQBOARD_PREFIX"]}'
 print(f'{serv}\n{pref}\n{cmd=}', file=sys.stderr)
 
-system(cmd)  # gebruik van subprocess is robuster!
+os.system(cmd)  # gebruik van subprocess is robuster!
