@@ -13,6 +13,8 @@ You can recover from any bug in any of the scripts in the lib folder, even an "i
 because the MQTT connection will persist. This allows you to correct any mistakes by uploading
 a known good set of scripts on the board.
 
+You can also see log messages (mqb view) and in your code you can decide which level of messages you want to see.
+
 So if you'd like to give it a try you will need:
 - a MQTT broker and its credentials.
 - a micropython esp32 (or esp8066) firmware.
@@ -46,6 +48,12 @@ to enter repl mode where you can type micropython directly on your esp module.
 
 Communication via MQTT (mqb) is much faster then via USB (rshell).
 Set you environment in the mqb script.
+The MQBOARD_SERVER should be the ip address of your MQTT server and MQBOARD_PREFIX is the first sting of the topic.
+This prefix is unique for every esp board and you can find it using the repl and looking for a line of the form:
+- I 16:50:20.298 watchdog: === topic=3101a4/mqb/cmd/eval/0F00D/
+
+The prefix would be "3101a4" in this example.
+
 You can do:
 - mqb ls                               # see what files are in the filesystem of your esp module
 - mqb sync sync-image                  # upload all files in the image folder to you esp module
