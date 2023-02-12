@@ -2,6 +2,13 @@ This repo is heavily based on the work of Thorsten von Eicken on
   https://github.com/tve/mqboard.
 It is here for my own convenience but someone might find it useful.
 
+The setup of Thorsten is very solid:
+You can upload new capabilities to your esp module by:
+- adding a new script into the lib folder
+- updating the config.py file in the lib folder
+- resetting the board with:
+  - mqb reset
+
 So if you'd like to give it a try you will need:
 - a MQTT broker and its credentials.
 - a micropython esp32 (or esp8066) firmware.
