@@ -1,0 +1,4 @@
+click==8.1.3         # Needed for communication with esp board via MQTT
+esptool==4.4         # Needed for installation of micropython to esp board via USB
+paho-mqtt==1.6.1     # Needed for communication with esp board via MQTT
+rshell==0.0.31       # Needed for communication with esp board via USB

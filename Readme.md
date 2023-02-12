@@ -1,0 +1,49 @@
+This repo is heavily based on the work of Thorsten von Eicken on
+  https://github.com/tve/mqboard
+It is here mainly for my own convenience.
+
+- You will need at least a MQTT broker and its credentials.
+- You will need a python env with esptools
+- you will need to download a micropython esp32 (or esp8066) executable.
+  I used <a
+  href='http://micropython.org/resources/firmware/esp32-20220618-v1.19.1.bin'>esp32-20220618-v1.19.1.bin</a>.
+  You can find the newest files on <a href='https://micropython.org/download/esp32/'>micropython
+  firmware page</a>.
+- create your python virtual environment and do: pip install -r requirements.txt
+- For convenience you could add the bin folder to your PATH environment variable.
+
+To upload micropython to your esp module go the the bin folder:
+  cd bin
+  wget http://micropython.org/resources/firmware/esp32-20220618-v1.19.1.bin
+  ./32flash.sh esp32-20220618-v1.19.1.bin erase flash
+
+Once you have the micropython firmware installed on your board you can start using rshell.
+Set your credentials in image/safemode/secrets.py.
+To put all python scripts in the image/ folder on you board you can use:
+  bin/upload-image.sh
+
+See requirements.txt to understand which libs we need for the python environment to
+communicate with your esp module.
+See bin folder to upload micropython (if not already done).
+Use rshell to interact with your esp board via USB. An Alias is handy:
+  alias rs='rshell --port /dev/ttyUSB0'../Readme.md
+Inside rs you have a few linux-like commands where you can use a special folder:
+  /pyboard
+that refers to the filesystem on your esp module.
+From your rshell prompt you can type:
+  repl
+to enter repl mode where you can type micropython directly on your esp module.
+
+After bootstrapping once using rshell you communicate faster over MQTT:
+Set you environment in mqb script.
+You can do:
+- mqb ls                               # see what files are in the filesystem of your esp module
+- mqb sync sync-image                  # upload all files in the image folder to you esp module
+- mqb put <local_file> <remote_file>   # upload a single file
+- mqb get <remote_file> [<local_file>] # download a file from your esp module
+- mqb reset                            # reboot your esp module
+- mqb eval a=123                       # evaluate a python command on your esp module
+- mqb eval a                           # evaluate and retrieve the result (python variable of
+                                       # previous commands still exist on your esp module)
+- mqb                                  # display help
+- mqb sync <sync_file>                 # upload files that were changed

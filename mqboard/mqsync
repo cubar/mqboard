@@ -1,0 +1,25 @@
+#! /usr/bin/env python3
+# MQSync - Command to sync files over MQTT to a MicroPython board
+# Copyright © 2020 by Thorsten von Eicken.
+
+import click
+import mqboard, engine, sync
+
+@click.command()
+@click.option(
+    "--dry-run", "-n", is_flag=True, help="Dry-run: print actions without performing them."
+)
+@click.argument("spec", type=click.File("r"), metavar="SPEC_FILE")
+@mqboard.global_opts
+@click.pass_context
+def cli(ctx, server, port, tls, timeout, verbose, prefix, topic, dry_run, spec):
+    """mqsync - MQTT MicroPython File Synchronization Tool
+
+    """
+    ctx.ensure_object(dict)
+    topic = mqboard.get_topic(prefix, topic)
+    eng = engine.MQTT(server, port, tls, topic, timeout, verbose)
+    sync.do_sync(eng, spec, dry_run)
+
+if __name__ == "__main__":
+    cli(obj={})

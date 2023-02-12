@@ -1,0 +1,13 @@
+#!/usr/bin/env ./mqboard/mqsync
+
+# To perform the copy you can delete the --check-only flag on each target folder
+
+/lib: --check-only
+  image/lib: *.py
+/safemode: --check-only
+  image/safemode: *.py
+/: --check-only
+  image: main.py
+/: --check-only
+  image/boot.py
+
