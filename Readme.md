@@ -10,6 +10,7 @@ So if you'd like to give it a try you will need:
   You can find the newest files on <a href='https://micropython.org/download/esp32/'>micropython
   firmware page</a>.
 - a python virtual environment: pip install -r requirements.txt
+
 For convenience you could add the bin folder to your PATH environment variable.
 
 To upload micropython to your esp module go the the bin folder:
