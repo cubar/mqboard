@@ -3,11 +3,9 @@
 from os import system, environ as env
 import sys
 
-server = '192.168.178.3'
-server = '10.42.0.1'
-board  = '9dc06c'  # p1
-board  = '5aff6c'  # esp
-board  = '5aff6c'  # Arnoud
+server = ''
+server = ''
+board  = ''
 
 if not env.get('MQBOARD_SERVER'):
   env['MQBOARD_SERVER'] = server
