@@ -4,14 +4,13 @@ It is here for my own convenience but someone might find it useful.
 
 So if you'd like to give it a try you will need:
 - a MQTT broker and its credentials.
-- a python env with esptools
 - a micropython esp32 (or esp8066) firmware.
   I used <a
   href='http://micropython.org/resources/firmware/esp32-20220618-v1.19.1.bin'>esp32-20220618-v1.19.1.bin</a>.
   You can find the newest files on <a href='https://micropython.org/download/esp32/'>micropython
   firmware page</a>.
-- create your python virtual environment and do: pip install -r requirements.txt
-- For convenience you could add the bin folder to your PATH environment variable.
+- a python virtual environment: pip install -r requirements.txt
+For convenience you could add the bin folder to your PATH environment variable.
 
 To upload micropython to your esp module go the the bin folder:
   cd bin
