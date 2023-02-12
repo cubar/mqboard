@@ -13,6 +13,8 @@ You can recover from any bug in any of the scripts in the lib folder, even an "i
 because the MQTT connection will persist. This allows you to correct any mistakes by uploading
 a known good set of scripts on the board.
 
+You can also see log messages (mqb view) and in your code you can decide which level of messages you want to see.
+
 So if you'd like to give it a try you will need:
 - a MQTT broker and its credentials.
 - a micropython esp32 (or esp8066) firmware.
