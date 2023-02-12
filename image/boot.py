@@ -49,7 +49,6 @@ if safemode:
 else:
     sys.path[:] = ["", ".frozen", "/lib", "/tools", '/safemode', ]  # set explicitly for now due to bug in cmake builds
     print("\rNORMAL MODE          \n===========")
-print(f'{os.getcwd()=} {sys.path=}')
 
 # watchdog
 #
